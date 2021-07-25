@@ -1,0 +1,17 @@
+[
+  {
+    "CoinID": 1,
+    "CoinName": "Bitcoin",
+    "CoinTicker": "BTC"
+  },
+  {
+    "CoinID": 2,
+    "CoinName": "Ethereum",
+    "CoinTicker": "ETH"
+  },
+  {
+    "CoinID": 3,
+    "CoinName": "Dogecoin",
+    "CoinTicker": "DOGE"
+  }
+]
