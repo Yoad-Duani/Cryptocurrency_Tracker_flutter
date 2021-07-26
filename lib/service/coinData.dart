@@ -11,14 +11,14 @@ const URL3 = 'URL';
 
 class CoinDataModel {
   //
-  Future<dynamic> getCoinData(
-    String coinID,
-    String currencyVS,
-  ) async {
+  Future<dynamic> getCoinData(String coinID, String currencyVS) async {
     NetworkingHelper networkingHelper = NetworkingHelper(url: '$dataCoinURL_part1?vs_currency=$currencyVS&ids=$coinID');
     var coinData = await networkingHelper.getData();
     return coinData;
   }
+
+  //
+  Future<dynamic> getCoinHistoricalData(String coinID, String currencyVS) {}
 
 //Future<dynamic> getLocationWeather(Position location) async {
 //     NetworkingHelper networkingHelper =

@@ -1,5 +1,6 @@
 // import 'file:///C:/yoad-new/study/flutter/Yoad-Git/crypto_stock_tracker_flutter/lib/screen/homePage/view/mainScreenPage_screen.dart';
 
+import 'package:crypto_stock_tracker_flutter/screen/coinData/view/coinData_Screen.dart';
 import 'package:crypto_stock_tracker_flutter/screen/mainScreenPage/view/mainScreenPage_screen.dart';
 import 'package:crypto_stock_tracker_flutter/screen/portfolioPage/view/portfolioPage.dart';
 import 'package:flutter/material.dart';
@@ -20,8 +21,10 @@ class MyApp extends StatelessWidget {
       getPages: [
         GetPage(name: "/mainScreenPage", page: () => MainScreenPage()),
         GetPage(name: "/portfolioPage", page: () => PortfolioPage()),
+        GetPage(name: "/coinDataPage", page: () => CoinDataPage())
       ],
-      initialRoute: "/mainScreenPage",
+      // initialRoute: "/mainScreenPage", //real start
+      initialRoute: "/coinDataPage", //for test
     );
   }
 }
