@@ -16,15 +16,15 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       title: 'Flutter Demo',
-      theme: ThemeData.light(),
+      // theme: ThemeData.light(),
       // home: HomePage(),
       getPages: [
         GetPage(name: "/mainScreenPage", page: () => MainScreenPage()),
         GetPage(name: "/portfolioPage", page: () => PortfolioPage()),
         GetPage(name: "/coinDataPage", page: () => CoinDataPage())
       ],
-      // initialRoute: "/mainScreenPage", //real start
-      initialRoute: "/coinDataPage", //for test
+      initialRoute: "/mainScreenPage", //real start
+      //initialRoute: "/coinDataPage", //for test
     );
   }
 }

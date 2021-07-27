@@ -41,7 +41,9 @@ class _MainScreenPageState extends State<MainScreenPage> {
           Padding(
             padding: EdgeInsets.only(right: 21.0),
             child: IconButton(
-              onPressed: () {},
+              onPressed: () {
+                Get.toNamed("/coinDataPage");
+              },
               icon: Icon(
                 Icons.refresh,
                 size: 22.0,
