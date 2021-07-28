@@ -14,6 +14,16 @@ class _CoinDataPageState extends State<CoinDataPage> {
 
   @override
   Widget build(BuildContext context) {
+    final List<SalesData> chartData = [
+      SalesData(2000, 12),
+      SalesData(2001, 18),
+      SalesData(2002, 14),
+      SalesData(2003, 24),
+      SalesData(2004, 28),
+      SalesData(2005, 34),
+      SalesData(2006, 32),
+      SalesData(2007, 40)
+    ];
     return Scaffold(
       backgroundColor: Colors.grey[100],
       appBar: AppBar(
@@ -21,23 +31,34 @@ class _CoinDataPageState extends State<CoinDataPage> {
         backgroundColor: Colors.grey[300],
         // centerTitle: true,
         title: Text(
-          'Coin Data',
+          '',
           style: TextStyle(
             color: Colors.black,
           ),
         ),
         actions: <Widget>[
-          // Padding(
-          //   padding: EdgeInsets.only(right: 21.0),
-          //   child: IconButton(
-          //     onPressed: () {},
-          //     icon: Icon(
-          //       Icons.arrow_back,
-          //       size: 22.0,
-          //       color: Colors.black,
-          //     ),
-          //   ),
-          // ),
+          Padding(
+            padding: EdgeInsets.only(right: 5.0),
+            child: IconButton(
+              onPressed: () {},
+              icon: Icon(
+                Icons.add_alert,
+                size: 22.0,
+                color: Colors.black,
+              ),
+            ),
+          ),
+          Padding(
+            padding: EdgeInsets.only(right: 10.0),
+            child: IconButton(
+              onPressed: () {},
+              icon: Icon(
+                Icons.more_vert,
+                size: 22.0,
+                color: Colors.black,
+              ),
+            ),
+          ),
         ],
       ),
       body: SafeArea(
@@ -116,7 +137,7 @@ class _CoinDataPageState extends State<CoinDataPage> {
                 ),
                 Container(
                   decoration: BoxDecoration(
-                    color: Colors.white,
+                    color: Colors.white12,
                     borderRadius: BorderRadius.only(topRight: Radius.circular(25.0), topLeft: Radius.circular(25.0)),
                     // border: Border(
                     //   bottom: BorderSide(color: Colors.white10, width: 2.0),
@@ -129,7 +150,36 @@ class _CoinDataPageState extends State<CoinDataPage> {
                       /// Chart
                       Padding(
                         padding: const EdgeInsets.all(6.0),
-                        child: SfCartesianChart(),
+                        child: SfCartesianChart(
+                          plotAreaBorderWidth: 0.0,
+                          // primaryXAxis: CategoryAxis(),
+                          primaryYAxis: NumericAxis(
+                            labelStyle: TextStyle(color: Colors.white),
+                            opposedPosition: true,
+                            majorGridLines: MajorGridLines(width: 0),
+                            majorTickLines: MajorTickLines(width: .0),
+                            axisLine: AxisLine(width: 0),
+                            // axisLine: AxisLine(color: Colors.deepOrange, width: 2, dashArray: <double>[5, 5]),
+                            isInversed: false,
+                            rangePadding: ChartRangePadding.additional,
+                          ),
+                          primaryXAxis: NumericAxis(
+                            labelStyle: TextStyle(color: Colors.white),
+                            // isVisible: false,
+                            majorGridLines: MajorGridLines(width: 0),
+                            majorTickLines: MajorTickLines(width: .0),
+                            axisLine: AxisLine(width: 0),
+                          ),
+                          series: <ChartSeries>[
+                            // Initialize line series
+                            FastLineSeries<SalesData, double>(
+                                color: Color(0xff149552),
+                                width: 1.2,
+                                dataSource: chartData,
+                                xValueMapper: (SalesData sales, _) => sales.year,
+                                yValueMapper: (SalesData sales, _) => sales.sales),
+                          ],
+                        ),
                       ),
                       //
                       //
@@ -217,7 +267,7 @@ class _CoinDataPageState extends State<CoinDataPage> {
                         ],
                       ),
                       SizedBox(
-                        height: 10.0,
+                        height: 15.0,
                       ),
                       Row(
                         children: [
@@ -238,7 +288,7 @@ class _CoinDataPageState extends State<CoinDataPage> {
                                                 Text('1', style: TextStyle(color: Colors.white))
                                               ],
                                             ),
-                                            SizedBox(height: 10.0),
+                                            SizedBox(height: 25.0),
                                             Row(
                                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                               children: [
@@ -246,12 +296,12 @@ class _CoinDataPageState extends State<CoinDataPage> {
                                                 Text('40347', style: TextStyle(color: Colors.white))
                                               ],
                                             ),
-                                            SizedBox(height: 10.0),
+                                            SizedBox(height: 25.0),
                                             Row(
                                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                               children: [Text('low 24h:', style: TextStyle(color: Colors.white60)), Text('36277', style: TextStyle(color: Colors.white))],
                                             ),
-                                            SizedBox(height: 10.0),
+                                            SizedBox(height: 25.0),
                                             Row(
                                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                               children: [
@@ -275,7 +325,7 @@ class _CoinDataPageState extends State<CoinDataPage> {
                                                 Text('18767993', style: TextStyle(color: Colors.white))
                                               ],
                                             ),
-                                            SizedBox(height: 10.0),
+                                            SizedBox(height: 25.0),
                                             Row(
                                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                               children: [
@@ -283,7 +333,7 @@ class _CoinDataPageState extends State<CoinDataPage> {
                                                 Text('21000000', style: TextStyle(color: Colors.white))
                                               ],
                                             ),
-                                            SizedBox(height: 10.0),
+                                            SizedBox(height: 25.0),
                                             Row(
                                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                               children: [
@@ -291,7 +341,7 @@ class _CoinDataPageState extends State<CoinDataPage> {
                                                 Text('64805', style: TextStyle(color: Colors.white))
                                               ],
                                             ),
-                                            SizedBox(height: 10.0),
+                                            SizedBox(height: 25.0),
                                             Row(
                                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                               children: [
@@ -328,10 +378,17 @@ class _CoinDataPageState extends State<CoinDataPage> {
 }
 
 class ChartSampleData {
-  ChartSampleData({this.low, this.high, this.close, this.open, this.x});
-  final DateTime x;
-  final num open;
-  final num close;
-  final num low;
-  final num high;
+  ChartSampleData({this.day, this.price});
+  final String day;
+  final double price;
+  // final num open;
+  // final num close;
+  // final num low;
+  // final num high;
+}
+
+class SalesData {
+  SalesData(this.year, this.sales);
+  final double year;
+  final double sales;
 }
